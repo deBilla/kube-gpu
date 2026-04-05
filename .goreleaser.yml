@@ -43,14 +43,16 @@ builds:
 
 archives:
   - id: kube-gpu
-    builds:
+    ids:
       - kube-gpu
-    format: tar.gz
+    formats:
+      - tar.gz
     name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
   - id: kubectl-gpu
-    builds:
+    ids:
       - kubectl-gpu
-    format: tar.gz
+    formats:
+      - tar.gz
     name_template: "kubectl-gpu_{{ .Os }}_{{ .Arch }}"
 
 brews:
