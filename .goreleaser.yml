@@ -57,6 +57,8 @@ archives:
 
 brews:
   - name: kube-gpu
+    ids:
+      - kube-gpu
     repository:
       owner: deBilla
       name: homebrew-tap
