@@ -12,6 +12,7 @@ A CLI tool that gives you a real-time view of GPU allocation across a Kubernetes
 - **JSON output** -- pipe into `jq` or other tools with `-o json`
 - **GPU log streaming** -- tail pod logs with CUDA/GPU error highlighting
 - **Event tracking** -- surface GPU scheduling failures and device plugin events
+- **Local GPU detection** -- detect GPUs on your machine (NVIDIA, Apple Silicon, AMD) with ML framework compatibility info
 - **Demo mode** -- try it without a cluster using `--demo`
 
 ## Quick Start
@@ -149,6 +150,50 @@ AGE    KIND   NAME                         REASON                 MESSAGE
 20m    Pod    inference-api-7b4f           Scheduled              Successfully assigned default/inference-api-7b4f to gpu-node-01
 ```
 
+### Local GPU detection
+
+Detect GPUs on the local machine -- no Kubernetes required. Supports NVIDIA (via nvidia-smi), Apple Silicon (via system_profiler), and AMD (via rocm-smi).
+
+```bash
+$ kube-gpu local
+```
+
+```
+System: darwin/arm64
+
+GPU 0: Apple M4 Pro (Apple)
+--------------------------------------------------
+  Memory:       24 GB (unified)
+  Metal Support: Metal 4
+  MPS:          supported
+  PyTorch:      torch.device("mps")
+
+  ML Frameworks:
+    PyTorch:      torch.device("mps")
+    TensorFlow:   tensorflow-metal plugin
+    MLX:          supported (Apple native)
+```
+
+On an NVIDIA machine:
+
+```
+System: linux/amd64
+
+GPU 0: NVIDIA A100-SXM4-80GB (NVIDIA)
+--------------------------------------------------
+  Memory:       71300 MB / 81920 MB
+  Utilization:  45%
+  Driver:       535.129.03
+  CUDA:         12.2
+  MIG:          enabled
+  MIG Profiles: 3g.20gb, 1g.5gb
+
+  ML Frameworks:
+    PyTorch:      torch.device("cuda")
+    TensorFlow:   tf.device("/GPU:0")
+    JAX:          jax.devices("gpu")
+```
+
 ### JSON output
 
 ```bash
@@ -271,7 +316,8 @@ kube-gpu/
 │   ├── nodes.go                # kube-gpu nodes
 │   ├── pods.go                 # kube-gpu pods
 │   ├── logs.go                 # kube-gpu logs (CUDA error highlighting)
-│   └── events.go               # kube-gpu events (scheduling failures)
+│   ├── events.go               # kube-gpu events (scheduling failures)
+│   └── local.go                # kube-gpu local (local GPU detection)
 ├── pkg/
 │   ├── gpu/
 │   │   ├── resources.go        # nvidia.com/* resource parsing
@@ -284,6 +330,7 @@ kube-gpu/
 │   ├── metrics/
 │   │   ├── provider.go         # MetricsProvider interface
 │   │   └── noop.go             # Default no-op provider
+│   ├── local/                  # Local GPU detection (NVIDIA, Apple, AMD)
 │   └── kube/client.go          # Kubernetes client factory
 ├── internal/testutil/          # Test fixtures and fake cluster data
 ├── deploy/krew/                # kubectl krew plugin manifest

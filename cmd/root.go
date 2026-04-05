@@ -90,6 +90,7 @@ func newRootCmd() *cobra.Command {
 	cmd.AddCommand(newPodsCmd())
 	cmd.AddCommand(newLogsCmd())
 	cmd.AddCommand(newEventsCmd())
+	cmd.AddCommand(newLocalCmd())
 
 	return cmd
 }
