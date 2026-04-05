@@ -6,7 +6,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/dimuthu/kube-gpu/pkg/local"
+	"github.com/deBilla/kube-gpu/pkg/local"
 	"github.com/spf13/cobra"
 )
 

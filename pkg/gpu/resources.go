@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strconv"
 
-	"github.com/dimuthu/kube-gpu/pkg/model"
+	"github.com/deBilla/kube-gpu/pkg/model"
 )
 
 const (

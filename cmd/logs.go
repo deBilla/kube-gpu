@@ -7,7 +7,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/dimuthu/kube-gpu/pkg/gpu"
+	"github.com/deBilla/kube-gpu/pkg/gpu"
 	"github.com/spf13/cobra"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

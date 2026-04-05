@@ -1,4 +1,4 @@
-module github.com/dimuthu/kube-gpu
+module github.com/deBilla/kube-gpu
 
 go 1.26.1
 

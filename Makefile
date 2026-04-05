@@ -2,7 +2,7 @@ BINARY_NAME=kube-gpu
 VERSION?=dev
 COMMIT=$(shell git rev-parse --short HEAD 2>/dev/null || echo "none")
 DATE=$(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
-LDFLAGS=-s -w -X github.com/dimuthu/kube-gpu/cmd.version=$(VERSION) -X github.com/dimuthu/kube-gpu/cmd.commit=$(COMMIT) -X github.com/dimuthu/kube-gpu/cmd.date=$(DATE)
+LDFLAGS=-s -w -X github.com/deBilla/kube-gpu/cmd.version=$(VERSION) -X github.com/deBilla/kube-gpu/cmd.commit=$(COMMIT) -X github.com/deBilla/kube-gpu/cmd.date=$(DATE)
 
 .PHONY: build test lint install clean release-snapshot
 

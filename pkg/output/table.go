@@ -5,7 +5,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/dimuthu/kube-gpu/pkg/model"
+	"github.com/deBilla/kube-gpu/pkg/model"
 )
 
 type TableRenderer struct {

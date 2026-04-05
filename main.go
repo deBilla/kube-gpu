@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/dimuthu/kube-gpu/cmd"
+	"github.com/deBilla/kube-gpu/cmd"
 )
 
 func main() {

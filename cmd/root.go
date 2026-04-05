@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/dimuthu/kube-gpu/pkg/kube"
-	"github.com/dimuthu/kube-gpu/pkg/metrics"
+	"github.com/deBilla/kube-gpu/pkg/kube"
+	"github.com/deBilla/kube-gpu/pkg/metrics"
 	"github.com/spf13/cobra"
 	"k8s.io/client-go/kubernetes"
 )

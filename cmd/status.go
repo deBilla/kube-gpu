@@ -1,9 +1,9 @@
 package cmd
 
 import (
-	"github.com/dimuthu/kube-gpu/internal/testutil"
-	"github.com/dimuthu/kube-gpu/pkg/gpu"
-	"github.com/dimuthu/kube-gpu/pkg/output"
+	"github.com/deBilla/kube-gpu/internal/testutil"
+	"github.com/deBilla/kube-gpu/pkg/gpu"
+	"github.com/deBilla/kube-gpu/pkg/output"
 	"github.com/spf13/cobra"
 )
 
