@@ -4,37 +4,44 @@ metadata:
   name: gpu
 spec:
   version: v0.1.0
-  homepage: https://github.com/dimuthu/kube-gpu
+  homepage: https://github.com/deBilla/kube-gpu
   shortDescription: "Inspect GPU and MIG allocation across the cluster"
   description: |
-    Shows GPU allocation, MIG partitions, pod assignments, and utilization
-    across all nodes in a Kubernetes cluster.
+    Shows GPU allocation, MIG partitions, pod assignments, utilization,
+    and pending jobs across all nodes in a Kubernetes cluster.
+
+    Features:
+    - MIG-aware GPU allocation view
+    - Pod-to-GPU-slice correlation
+    - GPU pod log streaming with CUDA error highlighting
+    - GPU scheduling event tracking
+    - JSON output for scripting
   platforms:
     - selector:
         matchLabels:
           os: darwin
           arch: amd64
-      uri: https://github.com/dimuthu/kube-gpu/releases/download/v0.1.0/kubectl-gpu_darwin_amd64.tar.gz
-      sha256: "PLACEHOLDER"
+      uri: https://github.com/deBilla/kube-gpu/releases/download/v0.1.0/kubectl-gpu_darwin_amd64.tar.gz
+      sha256: abbe7a71f7689131f42dffac7724834314f2564215ae0ac2dc8c902dbed574ad
       bin: kubectl-gpu
     - selector:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/dimuthu/kube-gpu/releases/download/v0.1.0/kubectl-gpu_darwin_arm64.tar.gz
-      sha256: "PLACEHOLDER"
+      uri: https://github.com/deBilla/kube-gpu/releases/download/v0.1.0/kubectl-gpu_darwin_arm64.tar.gz
+      sha256: fadffdcf33a237ff9e7f0e42891a674da8ee217ced2991eced6b1206a4c3a07a
       bin: kubectl-gpu
     - selector:
         matchLabels:
           os: linux
           arch: amd64
-      uri: https://github.com/dimuthu/kube-gpu/releases/download/v0.1.0/kubectl-gpu_linux_amd64.tar.gz
-      sha256: "PLACEHOLDER"
+      uri: https://github.com/deBilla/kube-gpu/releases/download/v0.1.0/kubectl-gpu_linux_amd64.tar.gz
+      sha256: 025d6c2d51232c24c1273cf3637b6b222d184d530010aed13e32016c75ec902a
       bin: kubectl-gpu
     - selector:
         matchLabels:
           os: linux
           arch: arm64
-      uri: https://github.com/dimuthu/kube-gpu/releases/download/v0.1.0/kubectl-gpu_linux_arm64.tar.gz
-      sha256: "PLACEHOLDER"
+      uri: https://github.com/deBilla/kube-gpu/releases/download/v0.1.0/kubectl-gpu_linux_arm64.tar.gz
+      sha256: 7ed246a6ff107a933ce1510b22500e2b61e800d135f28bef73974ff51bc9cf7e
       bin: kubectl-gpu
