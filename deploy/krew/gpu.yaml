@@ -1,0 +1,40 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: gpu
+spec:
+  version: v0.1.0
+  homepage: https://github.com/dimuthu/kube-gpu
+  shortDescription: "Inspect GPU and MIG allocation across the cluster"
+  description: |
+    Shows GPU allocation, MIG partitions, pod assignments, and utilization
+    across all nodes in a Kubernetes cluster.
+  platforms:
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: amd64
+      uri: https://github.com/dimuthu/kube-gpu/releases/download/v0.1.0/kubectl-gpu_darwin_amd64.tar.gz
+      sha256: "PLACEHOLDER"
+      bin: kubectl-gpu
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: arm64
+      uri: https://github.com/dimuthu/kube-gpu/releases/download/v0.1.0/kubectl-gpu_darwin_arm64.tar.gz
+      sha256: "PLACEHOLDER"
+      bin: kubectl-gpu
+    - selector:
+        matchLabels:
+          os: linux
+          arch: amd64
+      uri: https://github.com/dimuthu/kube-gpu/releases/download/v0.1.0/kubectl-gpu_linux_amd64.tar.gz
+      sha256: "PLACEHOLDER"
+      bin: kubectl-gpu
+    - selector:
+        matchLabels:
+          os: linux
+          arch: arm64
+      uri: https://github.com/dimuthu/kube-gpu/releases/download/v0.1.0/kubectl-gpu_linux_arm64.tar.gz
+      sha256: "PLACEHOLDER"
+      bin: kubectl-gpu

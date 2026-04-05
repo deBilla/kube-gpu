@@ -1,0 +1,76 @@
+version: 2
+
+project_name: kube-gpu
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: kube-gpu
+    main: .
+    binary: kube-gpu
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+      - -X github.com/dimuthu/kube-gpu/cmd.version={{.Version}}
+      - -X github.com/dimuthu/kube-gpu/cmd.commit={{.ShortCommit}}
+      - -X github.com/dimuthu/kube-gpu/cmd.date={{.Date}}
+
+  - id: kubectl-gpu
+    main: .
+    binary: kubectl-gpu
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+      - -X github.com/dimuthu/kube-gpu/cmd.version={{.Version}}
+      - -X github.com/dimuthu/kube-gpu/cmd.commit={{.ShortCommit}}
+      - -X github.com/dimuthu/kube-gpu/cmd.date={{.Date}}
+
+archives:
+  - id: kube-gpu
+    builds:
+      - kube-gpu
+    format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+  - id: kubectl-gpu
+    builds:
+      - kubectl-gpu
+    format: tar.gz
+    name_template: "kubectl-gpu_{{ .Os }}_{{ .Arch }}"
+
+brews:
+  - name: kube-gpu
+    repository:
+      owner: deBilla
+      name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
+    homepage: "https://github.com/deBilla/kube-gpu"
+    description: "Inspect GPU allocation across a Kubernetes cluster"
+    install: |
+      bin.install "kube-gpu"
+
+checksum:
+  name_template: "checksums.txt"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^ci:"
