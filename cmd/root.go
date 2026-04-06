@@ -55,6 +55,12 @@ func newRootCmd() *cobra.Command {
 				Demo:         demo,
 			}
 
+			// Commands that don't need a K8s cluster
+			name := cmd.Name()
+			if name == "local" || name == "version" {
+				return nil
+			}
+
 			if demo {
 				runCtx.MetricsProvider = metrics.NewNoopProvider()
 				return nil
